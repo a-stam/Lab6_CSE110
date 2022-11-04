@@ -93,7 +93,7 @@ class RecipeCard extends HTMLElement {
     `;
     // A5. TODO - Append the <style> and <article> elements to the Shadow DOM
     shadow.appendChild(style);
-    shadow.appendChild(article);    
+    shadow.appendChild(article);
   }
 
   /**
@@ -122,20 +122,20 @@ class RecipeCard extends HTMLElement {
     if (!data) return;
 
     // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
-    const article = this.shadowRoot.querySelector('article');
+    const article = this.shadowRoot.querySelector("article");
     // A7. TODO - Set the contents of the <article> with the <article> template given in
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
     // top img element
     const image = document.createElement("img");
-    image.src = data.imgSrc
-    image.alt = "Recipe Title"
+    image.src = data.imgSrc;
+    image.alt = "Recipe Title";
 
     // title paragraph
     const title = document.createElement("p");
     title.className = "title";
-    const titleLink = document.createElement('a')
+    const titleLink = document.createElement("a");
     titleLink.href = data.titleLnk;
     titleLink.innerText = data.titleTxt;
     title.appendChild(titleLink);
@@ -148,18 +148,18 @@ class RecipeCard extends HTMLElement {
     // rating div
     const rating = document.createElement("div");
     rating.className = "rating";
-    const ratingSpan = document.createElement("span")
-    ratingSpan.innerText = data.rating
+    const ratingSpan = document.createElement("span");
+    ratingSpan.innerText = data.rating;
     rating.appendChild(ratingSpan);
-    const ratingImage = document.createElement("img")
-    ratingImage.src = `/assets/images/icons/${data.rating}-star.svg`
-    ratingImage.alt = `${data.rating} stars`
+    const ratingImage = document.createElement("img");
+    ratingImage.src = `/assets/images/icons/${data.rating}-star.svg`;
+    ratingImage.alt = `${data.rating} stars`;
     rating.appendChild(ratingImage);
-    const ratingCount = document.createElement("span")
-    ratingCount.innerText = `(${data.numRatings})`
+    const ratingCount = document.createElement("span");
+    ratingCount.innerText = `(${data.numRatings})`;
     rating.appendChild(ratingCount);
 
-    // time 
+    // time
     const time = document.createElement("time");
     time.innerText = data.lengthTime;
 
