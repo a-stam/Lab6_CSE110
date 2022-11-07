@@ -128,52 +128,22 @@ class RecipeCard extends HTMLElement {
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
     // top img element
-    const image = document.createElement("img");
-    image.src = data.imgSrc;
-    image.alt = "Recipe Title";
-
-    // title paragraph
-    const title = document.createElement("p");
-    title.className = "title";
-    const titleLink = document.createElement("a");
-    titleLink.href = data.titleLnk;
-    titleLink.innerText = data.titleTxt;
-    title.appendChild(titleLink);
-
-    // organization paragraph
-    const organization = document.createElement("p");
-    organization.className = "organization";
-    organization.innerText = data.organization;
-
-    // rating div
-    const rating = document.createElement("div");
-    rating.className = "rating";
-    const ratingSpan = document.createElement("span");
-    ratingSpan.innerText = data.rating;
-    rating.appendChild(ratingSpan);
-    const ratingImage = document.createElement("img");
-    ratingImage.src = `/assets/images/icons/${data.rating}-star.svg`;
-    ratingImage.alt = `${data.rating} stars`;
-    rating.appendChild(ratingImage);
-    const ratingCount = document.createElement("span");
-    ratingCount.innerText = `(${data.numRatings})`;
-    rating.appendChild(ratingCount);
-
-    // time
-    const time = document.createElement("time");
-    time.innerText = data.lengthTime;
-
-    // ingredients paragraph
-    const ingredients = document.createElement("p");
-    ingredients.className = "ingredients";
-    ingredients.innerText = data.ingredients;
-
-    article.appendChild(image);
-    article.appendChild(title);
-    article.appendChild(organization);
-    article.appendChild(rating);
-    article.appendChild(time);
-    article.appendChild(ingredients);
+    article.innerHTML = `
+      <img src= ${data["imgSrc"]} alt= ${data["imgAlt"]}>
+      <p class="title">
+        <a href= ${data["titleLnk"]}>${data["titleTxt"]}</a>
+      </p>
+      <p class="organization">${data["organization"]}</p>
+      <div class="rating">
+        <span>${data["rating"]}</span>
+        <img src="/assets/images/icons/${data["rating"]}-star.svg" alt="5 stars">
+        <span>${data["numRatings"]}</span>
+      </div>
+      <time>${data["lengthTime"]}</time>
+      <p class="ingredients">
+        ${data["ingredients"]}
+      </p>
+    `;
   }
 }
 
